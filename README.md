@@ -18,4 +18,4 @@
 - @media запросы;
 - javascript.
 
-Ссылка на сайт: [https://](https://)
+Ссылка на сайт: [https://salatsr.github.io/mesto/index.html](https://salatsr.github.io/mesto/index.html)
