@@ -1,7 +1,7 @@
 .profile__edit-button {
   position: relative;
   display: inline-block;
-  background-image: url(../../../images/edit-button.svg);
+  background-image: url(../../../images/image-button-edit.svg);
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
