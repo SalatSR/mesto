@@ -1,0 +1,13 @@
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 0;
+  margin: 0 auto 20px;
+  height: 361px;
+  width: 282px;
+  transition: all .2s linear;
+}
+
+.card:last-child {
+  margin: 0 auto 0;
+}

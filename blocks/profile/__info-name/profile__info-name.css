@@ -1,0 +1,11 @@
+.profile__info-name {
+  display: inline-block;
+  position: relative;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style:  normal;
+  font-weight: 500;
+  font-size: 27px;
+  margin: 0 auto;
+  padding: 0 0 9px;
+  transition: all .2s linear;
+}

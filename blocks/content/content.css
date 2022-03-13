@@ -1,0 +1,10 @@
+.content {
+  padding: 42px 19px 48px;
+  transition: all .2s linear;
+}
+
+@media screen and (min-width: 619px) {
+  .content {
+    padding: 40px 0 48px;
+  }
+}
