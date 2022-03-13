@@ -1,8 +1,7 @@
 .profile__add-button {
   display: block;
   position: relative;
-  /* border: 2px solid #fff; */
-  border: none;
+  border: 2px solid #fff;
   background-color: #000;
   background-image: url(../../../images/image-button-add.svg);
   background-repeat: no-repeat;
@@ -16,21 +15,12 @@
   transition: all .2s linear;
 }
 
-.profile__add-button:hover::after {
-  position: absolute;
-  content: '';
-  top: 0px;
-  left: 0px;
-  height: 50px;
-  width: 282px;
-  background-color: rgba(0, 0, 0, .7);
+.profile__add-button:hover {
+  opacity: .6;
 }
 
 @media screen and (min-width: 619px) {
   .profile__add-button {
     width: 150px;
-    margin: 0;
-    justify-self: flex-end;
   }
 }
-
