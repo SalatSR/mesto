@@ -7,3 +7,9 @@
   padding: 0 0 33px;
   transition: all .2s linear;
 }
+
+@media screen and (min-width: 619px) {
+  .profile__info-job {
+    font-size: 18px;
+  }
+}

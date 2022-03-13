@@ -3,8 +3,8 @@
   padding: 0;
   margin: 0 auto;
   text-align: center;
-  min-height: 286px;
   width: 282px;
+  max-width: 880px;
   transition: all .2s linear;
 }
 
@@ -13,7 +13,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: calc(100vw - 38px);
+    width: calc(100vw - 30px);
     padding: 0;
+  }
+}
+
+@media screen and (min-width: 880px) {
+  .profile {
+    width: 100%;
   }
 }
