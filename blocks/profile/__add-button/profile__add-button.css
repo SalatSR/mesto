@@ -8,7 +8,7 @@
   background-size: fill;
   background-position: center;
   cursor: pointer;
-  margin: 0 auto 0;
+  margin: 0 auto;
   padding: 0;
   height: 50px;
   width: 282px;
@@ -22,5 +22,6 @@
 @media screen and (min-width: 619px) {
   .profile__add-button {
     width: 150px;
+    margin: 0;
   }
 }
