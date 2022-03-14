@@ -13,3 +13,8 @@
     padding: 45px 0 0;
   }
 }
+
+@media screen and (min-width: 880px) {
+  .page__content {
+  }
+}
