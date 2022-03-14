@@ -5,6 +5,7 @@
 
 @media screen and (min-width: 619px) {
   .cards {
+    padding: 50px 0 0;
     display: grid;
     width: min-content;
     gap: 17px;
@@ -16,7 +17,7 @@
 
 @media screen and (min-width: 880px) {
   .cards {
-    gap: 17px;
+    gap: 20px 17px;
     grid-template-columns: min-content min-content min-content;
     grid-template-rows: max-content max-content max-content;
     margin: 0 auto;

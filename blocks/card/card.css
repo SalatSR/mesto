@@ -11,3 +11,9 @@
 .card:last-child {
   margin: 0 auto 0;
 }
+
+@media screen and (min-width: 619px) {
+  .card {
+    margin: 0;
+  }
+}

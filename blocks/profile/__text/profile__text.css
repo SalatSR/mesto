@@ -1,11 +1,18 @@
 .profile__text {
-  display: inline-block;
-  width: 190px;
+  padding: 0 0 33px;
 }
 
 @media screen and (min-width: 619px) {
   .profile__text {
     text-align: left;
-    width: 230px;
+    padding: 0;
+    width: 260px;
   }
 }
+
+@media screen and (min-width: 880px) {
+  .profile__text {
+    width: 336px;
+  }
+}
+
