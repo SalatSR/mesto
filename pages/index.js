@@ -14,6 +14,9 @@ let popupCloser = formElement.querySelector('.popup__closer');
 let profileElement = document.querySelector('.profile');
 // Находим кнопку "Edit"(profile) в DOM
 let editBtn = profileElement.querySelector('.profile__edit-button');
+// Находим кнопку ПОля ввода в профиле
+let nameInputProfile = profileElement.querySelector('.profile__info-name');
+let jobInputProfile = profileElement.querySelector('.profile__info-job');
 
 
 // Обработчик «отправки» формы, хотя пока
@@ -27,8 +30,8 @@ function formSubmitHandler (evt) {
     nameInput.value;
     jobInput.value;
     // Выберите элементы, куда должны быть вставлены значения полей
-    let nameInputProfile = profileElement.querySelector('.profile__info-name');
-    let jobInputProfile = profileElement.querySelector('.profile__info-job');
+    
+    
     // Вставьте новые значения с помощью textContent
     nameInputProfile.textContent = nameInput.value;
     jobInputProfile.textContent = jobInput.value;
@@ -42,6 +45,8 @@ formElement.addEventListener('submit', formSubmitHandler);
 // Открываем Popup (profile)
 function openProfile() {
   popupFormContaner.classList.add('popup_opened');
+  nameInput.value = nameInputProfile.textContent;
+  jobInput.value = jobInputProfile.textContent;
 }
 // Закрываем Popup (profile)
 function closeProfile() {
