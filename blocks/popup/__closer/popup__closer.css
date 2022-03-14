@@ -26,3 +26,15 @@
 .popup__closer::after {
  transform: rotate(-45deg);
 }
+
+@media screen and (min-width: 619px) {
+  .popup__closer {
+    right: -25px;
+    top: -45px;
+  }
+  
+  .popup__closer::before, .popup__closer::after {
+    height: 40px;
+    width: 4px;
+  }
+}

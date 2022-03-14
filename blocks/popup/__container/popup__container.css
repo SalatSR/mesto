@@ -7,3 +7,11 @@
   padding: 25px 22px 25px;
   width: 282px;
 }
+
+@media screen and (min-width: 619px) {
+  .popup__container {
+    margin: 195px auto 0;
+    padding: 34px 36px 37px;
+    width: 430px;
+  }
+}
