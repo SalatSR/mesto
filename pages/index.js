@@ -27,8 +27,7 @@ function formSubmitHandler (evt) {
                                                 // О том, как это делать, расскажем позже.
 
     // Получите значение полей jobInput и nameInput из свойства value
-    nameInput.value;
-    jobInput.value;
+
     // Выберите элементы, куда должны быть вставлены значения полей
     
     
