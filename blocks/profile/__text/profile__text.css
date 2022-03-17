@@ -6,13 +6,13 @@
   .profile__text {
     text-align: left;
     padding: 0;
-    width: 260px;
+    max-width: 285px;
   }
 }
 
 @media screen and (min-width: 880px) {
   .profile__text {
-    width: 336px;
+    max-width: 530px;
   }
 }
 

@@ -8,7 +8,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-color: #000;
-  margin: 8px 19px 0 12px;
+  margin: 8px 0 0 10px;
   cursor: pointer;
   height: 18px;
   width: 18px;
@@ -21,7 +21,6 @@
 
 @media screen and (min-width: 619px) {
   .profile__edit-button {
-    margin: 8px 0 0 12px;
     height: 24px;
     width: 24px;
   }
@@ -29,7 +28,8 @@
 
 @media screen and (min-width: 880px) {
   .profile__edit-button {
-    margin: 15px 0 0 12px;
+    margin-top: 15px;
+    margin-left: 12px;
   }
 }
 
