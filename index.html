@@ -5,18 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
-  <title>Mesto Russia</title>
+  <title>Место Россия</title>
 </head>
 <body class="page">
-  <article class="popup">
-    <form action="#" class="popup__container">
-      <span class="popup__closer"></span>
-      <h2 class="popup__header">Редактировать профиль</h2>
-      <input type="text" class="popup__name" placeholder="ФИО">
-      <input type="text" class="popup__job" placeholder="Специальность">
-      <input type="submit" class="popup__submit-button" value="Сохранить">
-    </form>
-  </article>
   <div class="page__content">
     <header class="header">
         <img src="./images/image-logo.svg"
@@ -111,6 +102,15 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
+    <div class="popup">
+      <form action="#" class="popup__container">
+        <span class="popup__closer"></span>
+        <h2 class="popup__header">Редактировать профиль</h2>
+        <input type="text" class="popup__name" placeholder="ФИО">
+        <input type="text" class="popup__job" placeholder="Специальность">
+        <input type="submit" class="popup__submit-button" value="Сохранить">
+      </form>
+    </div>
   </div>
   <script src="./pages/index.js"></script>
 </body>
