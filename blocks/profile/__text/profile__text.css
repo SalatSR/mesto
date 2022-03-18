@@ -1,5 +1,5 @@
 .profile__text {
-  padding: 0 0 33px;
+  padding: 26px 0 33px;
 }
 
 @media screen and (min-width: 619px) {
@@ -15,4 +15,3 @@
     max-width: 530px;
   }
 }
-
