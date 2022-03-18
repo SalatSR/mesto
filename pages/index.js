@@ -3,8 +3,8 @@ let popupFormContaner = document.querySelector('.popup');
 // Находим форму в DOM
 let formElement = document.querySelector('.popup__container');
 // Находим поля формы в DOM
-let nameInput = formElement.querySelector('.popup__name');
-let jobInput = formElement.querySelector('.popup__job');
+let nameInput = formElement.querySelector('.popup__input_type_name');
+let jobInput = formElement.querySelector('.popup__input_type_job');
 // Находим кнопку "Close"(popup-profile)
 let popupCloser = formElement.querySelector('.popup__closer');
 
