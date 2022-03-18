@@ -92,13 +92,21 @@
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
     <div class="popup">
-      <form action="#" name="form-profile-info" class="popup__container">
-        <span class="popup__closer"></span>
+      <div class="popup__container">
+        <button type="button" class="popup__closer"></button>
         <h2 class="popup__header">Редактировать профиль</h2>
-        <input type="text" class="popup__name" placeholder="ФИО">
-        <input type="text" class="popup__job" placeholder="Специальность">
-        <button type="submit" class="popup__submit-button">Сохранить</button>
-      </form>
+        <form action="#" name="form-profile-info" class="popup__form">
+          <input name="form-profile-input-name"
+                  type="text"
+                  class="popup__input popup__input_type_name"
+                  placeholder="ФИО">
+          <input name="form-profile-input-job"
+                  type="text"
+                  class="popup__input popup__input_type_job"
+                  placeholder="Специальность">
+          <button type="submit" class="popup__submit-button">Сохранить</button>
+        </form>
+      </div>
     </div>
   </div>
   <script src="./pages/index.js"></script>

@@ -1,8 +1,10 @@
 .popup__closer {
+  background-color: rgba(0, 0, 0, .0);
+  border: none;
   display: block;
   position: absolute;
-  right: 10px;
-  top: -30px;
+  right: 5px;
+  top: -38px;
   cursor: pointer;
 }
 
@@ -14,7 +16,7 @@
   display: block;
   position: absolute;
   content: ' ';
-  height: 20px;
+  height: 23px;
   width: 2px;
   background-color: #fff;
 }
@@ -29,7 +31,7 @@
 
 @media screen and (min-width: 619px) {
   .popup__closer {
-    right: -25px;
+    right: -28px;
     top: -45px;
   }
   

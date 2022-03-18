@@ -1,5 +1,4 @@
-.popup__name {
-  position: relative;
+.popup__input {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   font-style:  normal;
   font-weight: 400;
@@ -7,13 +6,6 @@
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
   box-sizing: border-box;
-  margin: 75px auto 0;
   min-height: 27px;
   width: 100%;
-}
-
-@media screen and (min-width: 619px) {
-  .popup__name {
-    margin-top: 50px;
-  }
 }
