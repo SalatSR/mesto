@@ -32,6 +32,9 @@ let inputFormCardTitle = formCard.querySelector('.popup__input_type_title');
 let inputFormCardUrl = formCard.querySelector('.popup__input_type_url');
 // Находим Поле карт
 let cardsContainer = document.querySelector('.cards');
+// Находим поля ссылки и описания для попапа 
+let popupImageViewWindow = popupImageView.querySelector('.popup__image-view-window');
+let popupImageViewDescription = popupImageView.querySelector('.popup__description');
 
 const initialCards = [
   {
@@ -70,19 +73,19 @@ function closePopup(type) {
 }
 // Открываем Popup (profile)
 function openProfile() {
-  openPopup(popupProfile)
   inputFormProfileName.value = inputFormProfileNameProfileSection.textContent;
   inputFormProfileJob.value = inputFormProfileJobProfileSection.textContent;
+  openPopup(popupProfile)
 }
 // Открываем Popup (card)
-function openCard(name, link) {
-  openPopup(popupCard)
-  // popupIllustration.src = link;
-  // popupIllustration.alt = name;
-  // popupDescription.textContent = name; 
+function openCard() {
+  openPopup(popupCard); 
 }
 // Открываем Popup (Image-view)
-function openImageView() {
+function openImageView(name, link) {
+  popupImageViewWindow.src = link;
+  popupImageViewWindow.alt = name;
+  popupImageViewDescription.textContent = name;
   openPopup(popupImageView)
 }
 // Кнопки на карточках
@@ -110,7 +113,7 @@ function fillNewCard(cardHeader, cardLink) {
   cardDelete.addEventListener('click', deleteCard);
   cardLike.addEventListener('click', addLike);
 
-  cardItem.addEventListener('click', () => openImageView(imageLink, imageName));
+  cardImg.addEventListener('click', () => openImageView(cardHeader, cardLink));
   cardName.textContent = cardHeader;
 
   return cardItem;
