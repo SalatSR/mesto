@@ -81,7 +81,7 @@ function openCard(name, link) {
   // popupIllustration.alt = name;
   // popupDescription.textContent = name; 
 }
-// Открываем Popup (card)
+// Открываем Popup (Image-view)
 function openImageView() {
   openPopup(popupImageView)
 }
@@ -106,10 +106,12 @@ function fillNewCard(cardHeader, cardLink) {
   // Сохраняем ссылку и описание
   cardImg.alt = cardHeader;
   cardImg.src = cardLink;
-
-  cardName.textContent = cardHeader;
+  // Подключаем слушатели кнопок карточки
   cardDelete.addEventListener('click', deleteCard);
   cardLike.addEventListener('click', addLike);
+
+  cardItem.addEventListener('click', () => openImageView(imageLink, imageName));
+  cardName.textContent = cardHeader;
 
   return cardItem;
 }
@@ -118,6 +120,7 @@ function fillNewCard(cardHeader, cardLink) {
 function addNewCard (cardItem) {
   cardsContainer.prepend(cardItem);
 }
+//загружаем базовые карточки
 initialCards.forEach((item) => addNewCard(fillNewCard(item.name, item.link)));
 
 // Обработчик события submit на формах
