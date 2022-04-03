@@ -6,8 +6,13 @@ let popupCard = document.querySelector('.popup__type_card');
 let popupImageView = document.querySelector('.popup__type_image-view');
 // Находим поле Профиля
 let profileElement = document.querySelector('.profile');
-// Находим форму в DOM
+// Находим формы
 let formElement = document.querySelector('.popup__container');
+let formProfile = popupProfile.querySelector('.popup__form_profile');
+let formCard = popupCard.querySelector('.popup__form_card');
+console.log(formElement);
+console.log(formProfile);
+console.log(formCard);
 // Находим кнопки
 let editBtn = profileElement.querySelector('.profile__edit-button'); // "Edit"
 let addBtn = profileElement.querySelector('.profile__add-button'); // "Add"
@@ -18,12 +23,16 @@ let popupCloserImageView = popupImageView.querySelector('.popup__closer_image-vi
 // кнопки отправки форм
 let popupSubmitProfile = popupProfile.querySelector('.popup__submit-button_profile'); 
 let popupSubmitCard = popupProfile.querySelector('.popup__submit-button_card'); 
-// Находим поля формы в DOM
-let nameInput = formElement.querySelector('.popup__input_type_name');
-let jobInput = formElement.querySelector('.popup__input_type_job');
-// Находим кнопку ПОля ввода в профиле
-let nameInputProfile = profileElement.querySelector('.profile__info-name');
-let jobInputProfile = profileElement.querySelector('.profile__info-job');
+// Находим поля форм
+// Profile
+let inputFormProfileName = formElement.querySelector('.popup__input_type_name');
+let inputFormProfileJob = formElement.querySelector('.popup__input_type_job');
+// Card
+let inputFormCardTitle = formCard.querySelector('.popup__input_type_title');
+let inputFormCardUrl = formCard.querySelector('.popup__input_type_url');
+// Находим поле ввода в поле Profile
+let inputFormProfileNameProfile = profileElement.querySelector('.profile__info-name');
+let inputFormProfileJobProfile = profileElement.querySelector('.profile__info-job');
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -32,14 +41,14 @@ function formSubmitHandler (evt) {
                                                 // Так мы можем определить свою логику отправки.
                                                 // О том, как это делать, расскажем позже.
 
-    // Получите значение полей jobInput и nameInput из свойства value
+    // Получите значение полей inputFormProfileJob и inputFormProfileName из свойства value
 
     // Выберите элементы, куда должны быть вставлены значения полей
     
     
     // Вставьте новые значения с помощью textContent
-    nameInputProfile.textContent = nameInput.value;
-    jobInputProfile.textContent = jobInput.value;
+    inputFormProfileNameProfile.textContent = inputFormProfileName.value;
+    inputFormProfileJobProfile.textContent = inputFormProfileJob.value;
     closeProfile();
 }
 
@@ -60,27 +69,28 @@ function closePopup(type) {
 // Открываем Popup (profile)
 function openProfile() {
   openPopup(popupProfile)
-  nameInput.value = nameInputProfile.textContent;
-  jobInput.value = jobInputProfile.textContent;
+  inputFormProfileName.value = inputFormProfileNameProfile.textContent;
+  inputFormProfileJob.value = inputFormProfileJobProfile.textContent;
 }
 
 // Открываем Popup (card)
 function openCard() {
   openPopup(popupCard)
-  nameInput.value = nameInputProfile.textContent;
-  jobInput.value = jobInputProfile.textContent;
+  inputFormProfileName.value = inputFormProfileNameProfile.textContent;
+  inputFormProfileJob.value = inputFormProfileJobProfile.textContent;
 }
 
 // Открываем Popup (card)
 function openImageView() {
   openPopup(popupImageView)
-  nameInput.value = nameInputProfile.textContent;
-  jobInput.value = jobInputProfile.textContent;
+  inputFormProfileName.value = inputFormProfileNameProfile.textContent;
+  inputFormProfileJob.value = inputFormProfileJobProfile.textContent;
 }
 
 // Слушатели кнопок
 editBtn.addEventListener('click', openProfile);
 addBtn.addEventListener('click', openCard);
-popupCloserProfile.addEventListener('click', () => closePopup(popupProfile)); // "Close" (popup Profile)
-popupCloserCard.addEventListener('click', () => closePopup(popupCard)); // "Close" (popup Card)
-popupCloserImageView.addEventListener('click', () => closePopup(popupImageView)); // "Close" (popup Image)
+// кнопки закрытия
+popupCloserProfile.addEventListener('click', () => closePopup(popupProfile)); // popup Profile
+popupCloserCard.addEventListener('click', () => closePopup(popupCard)); // popup Card
+popupCloserImageView.addEventListener('click', () => closePopup(popupImageView)); // popup Image
