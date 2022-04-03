@@ -85,10 +85,14 @@ function openCard(name, link) {
 function openImageView() {
   openPopup(popupImageView)
 }
-
-// Функция кнопки like
+// Кнопки на карточках
+// Кнопка like
 function addLike(event) {
   event.target.classList.toggle('card__like_active'); 
+}
+// Кнопка удалить
+function deleteCard(event) {
+  event.target.closest('.card').remove();
 }
 
 // Функция наполнения новой карточки
@@ -97,13 +101,14 @@ function fillNewCard(cardHeader, cardLink) {
   let cardItem = cardTemplate.cloneNode(true);
   let cardImg = cardItem.querySelector('.card__img');
   let cardName = cardItem.querySelector('.card__name');
-  // let photosDeleteButton = cardElement.querySelector('.photos__delete-button');
+  let cardDelete= cardItem.querySelector('.card__delete-button');
   let cardLike = cardItem.querySelector('.card__like');
   // Сохраняем ссылку и описание
   cardImg.alt = cardHeader;
   cardImg.src = cardLink;
 
   cardName.textContent = cardHeader;
+  cardDelete.addEventListener('click', deleteCard);
   cardLike.addEventListener('click', addLike);
 
   return cardItem;
