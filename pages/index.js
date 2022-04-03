@@ -1,9 +1,9 @@
 // Находим окно popup
 let popupWindow = document.querySelector('.popup');
 // Находим нужный popup
-let popupProfile = document.querySelector('.popup__type_profile');
-let popupCard = document.querySelector('.popup__type_card');
-let popupImageView = document.querySelector('.popup__type_image-view');
+let popupProfile = document.querySelector('.popup_profile');
+let popupCard = document.querySelector('.popup_card');
+let popupImageView = document.querySelector('.popup_image-view');
 // Находим поле Профиля
 let profileSection = document.querySelector('.profile');
 // Находим формы
