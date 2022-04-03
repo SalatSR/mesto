@@ -31,66 +31,26 @@
         </div>
         <button type="button" class="profile__add-button" aria-label="add profile button"></button>
       </section>
+
       <section class="cards">
-        <article class="card">
-          <img src="./images/640-800-kirill-pershin-dH-RKxKs6to-unsplash.jpg"
-                  alt="Фото заброшенного храма в Карачаевске"
-                  class="card__img">
-          <div class="card__name-container">
-            <h2 class="card__name">Карачаевск</h2>
-            <button type="button" class="card__like" aria-label="like button"></button>
-          </div>
-        </article>
-        <article class="card">
-          <img src="./images/640-800-kirill-pershin-HJNJV2Be4Ps-unsplash.jpg"
-                  alt="Фото на гору Эльбрус"
-                  class="card__img">
-          <div class="card__name-container">
-            <h2 class="card__name">Гора Эльбрус</h2>
-            <button type="button" class="card__like" aria-label="like button"></button>
-          </div>
-        </article>
-        <article class="card">
-          <img src="./images/640-800-kirill-pershin-jmQEz9VvUoI-unsplash.jpg"
-                  alt="Фото с видом на Домбай"
-                  class="card__img">
-          <div class="card__name-container">
-            <h2 class="card__name">Домбай</h2>
-            <button type="button" class="card__like" aria-label="like button"></button>
-          </div>
-        </article>
-        <article class="card">
-          <img src="./images/640-800-kirill-pershin-HJNJV2Be4Ps-unsplash.jpg"
-                  alt="Фото на гору Эльбрус"
-                  class="card__img">
-          <div class="card__name-container">
-            <h2 class="card__name">Гора Эльбрус</h2>
-            <button type="button" class="card__like" aria-label="like button"></button>
-          </div>
-        </article>
-        <article class="card">
-          <img src="./images/640-800-kirill-pershin-jmQEz9VvUoI-unsplash.jpg"
-                  alt="Фото с видом на Домбай"
-                  class="card__img">
-          <div class="card__name-container">
-            <h2 class="card__name">Домбай</h2>
-            <button type="button" class="card__like" aria-label="like button"></button>
-          </div>
-        </article>
-        <article class="card">
-          <img src="./images/800px-D0807I14-HarbourTour.jpg"
-                  alt="Фото с видом на Корякскую Сопку"
-                  class="card__img">
-          <div class="card__name-container">
-            <h2 class="card__name">Корякская Сопка</h2>
-            <button type="button" class="card__like" aria-label="like button"></button>
-          </div>
-        </article>
+        <template id="card-template">
+          <article class="card">
+              <img src="#"
+                      alt="Фото"
+                      class="card__img">
+              <div class="card__name-container">
+                <h2 class="card__name"></h2>
+                <button type="button" class="card__like" aria-label="like button"></button>
+              </div>
+          </article>
+        </template>
       </section>
     </main>
+
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
+
     <div class="popup popup__type_profile">
       <div class="popup__container">
         <button type="button" class="popup__closer popup__closer_profile" aria-label="popup closer button"></button>
