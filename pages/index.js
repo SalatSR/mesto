@@ -34,9 +34,23 @@ const cardsContainer = document.querySelector('.cards');
 const popupImageViewWindow = popupImageView.querySelector('.popup__image-view-window');
 const popupImageViewDescription = popupImageView.querySelector('.popup__description');
 
+// Функция очистки сообщений ошибок при повторном открытии попапа
+function clearErrors (type) {
+  const errors = type.querySelectorAll('.popup__error');
+  const inputs = type.querySelectorAll('.popup__input');
+  errors.forEach((error) => {
+    error.textContent = '';
+  });
+
+  inputs.forEach((input) => {
+    input.classList.remove('popup__input_type_error');
+  });
+}
+
 // Открываем Popup
 function openPopup(type) {
   type.classList.add('popup_opened');
+  clearErrors(type);
 }
 // Закрываем Popup
 function closePopup(type) {
@@ -50,9 +64,9 @@ function openProfile() {
 }
 // Открываем Popup (card)
 function openCard() {
-  openPopup(popupCard);
   inputFormCardTitle.value = '';
   inputFormCardUrl.value = '';
+  openPopup(popupCard);
 }
 // Открываем Popup (Image-view)
 function openImageView(name, link) {
