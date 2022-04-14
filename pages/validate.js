@@ -7,6 +7,17 @@ const validationConfig = {
   errorClass: 'popup__error_visible'
 }; 
 
+// задаём функцию контроля стилей состояния кнопки submit
+const toggleButtonState = (formSubmitButton, isActive, config) => {
+  if (isActive) {
+    formSubmitButton.classList.remove(config.inactiveButtonClass);
+    formSubmitButton.disabled = false;
+  } else {
+    formSubmitButton.classList.add(config.inactiveButtonClass);
+    formSubmitButton.disabled = true;
+  }
+}
+
 const setEventListener = (formElement, config) => {
   // Находим поля ввода в каждой форме
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
@@ -15,10 +26,10 @@ const setEventListener = (formElement, config) => {
   inputList.forEach((inputElement) => {
     // Вешаем слушатель события input на каждый элемент формы
     // вызываем функцию проверки корректности ввода данных пользователем
-    // вызываем функцию контроля состояния кнопки submit
+    // вызываем функцию контроля стилей состояния кнопки submit
     inputElement.addEventListener('input', () => {
       isValid(formElement, inputElement, config);
-      setButtonSubmitState(submitButton, formElement.isValid(), config);
+      toggleButtonState(submitButton, formElement.isValid(), config);
     });
   });
 };
@@ -33,6 +44,11 @@ const enableValidation = (config) => {
     formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
     });
+    //найдём кнопку submit
+    // вызываем функцию проверки состояния стилей кнопки submit
+    const submitButton = formElement.querySelector(config.submitButtonSelector);
+    toggleButtonState(submitButton, formElement.isValid(), config);
+
   });
 };
 
