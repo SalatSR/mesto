@@ -47,14 +47,36 @@ function clearErrors (type) {
   });
 }
 
+//Функция закрытия попапа по клавише
+function popupCloserByKeydown (evt) {
+  if (evt.key === 'Escape') {
+    closePopup();
+  }
+}
+
+// Функция проверки элемента на котором сработало событие click
+function popupCloseByClick(evt) {
+  if (evt.target.classList.contains('popup')) {
+    closeOpenedPopup();
+  }
+}
+
+// Функция закрытия поапа по click
+function closeOpenedPopup() {
+  const openedPopup = document.querySelector('.popup_opened');
+  openedPopup.classList.remove('popup_opened');
+}
+
 // Открываем Popup
 function openPopup(type) {
   type.classList.add('popup_opened');
   clearErrors(type);
+  document.addEventListener('keydown', popupCloserByKeydown)
 }
 // Закрываем Popup
 function closePopup(type) {
   type.classList.remove('popup_opened');
+  document.removeEventListener('keydown', popupCloserByKeydown)
 }
 // Открываем Popup (profile)
 function openProfile() {
@@ -134,6 +156,7 @@ function formSubmitCard(event) {
 // Слушатели кнопок
 editBtn.addEventListener('click', openProfile);
 addBtn.addEventListener('click', openCard);
+document.addEventListener('click', popupCloseByClick);
 // кнопки закрытия
 popupCloserProfile.addEventListener('click', () => closePopup(popupProfile)); // popup Profile
 popupCloserCard.addEventListener('click', () => closePopup(popupCard)); // popup Card
