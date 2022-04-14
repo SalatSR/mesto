@@ -24,8 +24,10 @@ const hideError = (formElement, inputElement, config) => {
 const checkInputValidity = (formElement, inputElement, config) => {
   if (!inputElement.validity.valid) {
     showError(formElement, inputElement, config);
+    return false;
   } else {
     hideError(formElement, inputElement, config);
+    return true;
   };
 }
 
@@ -45,17 +47,16 @@ const setEventListener = (formElement, config) => {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
   // находим кнопку submit
   const submitButton = formElement.querySelector(config.submitButtonSelector);
-  console.log('submitButton, formElement.checkInputValidity, config', submitButton, ' || ', checkInputValidity(), ' || ',  config);
   // вызываем функцию проверки состояния стилей кнопки submit
-  // toggleButtonState(submitButton, formElement.checkInputValidity, config);
+  toggleButtonState(submitButton, formElement.checkInputValidity, config);
   inputList.forEach((inputElement) => {
     // Вешаем слушатель события input на каждый элемент формы
     // вызываем функцию проверки корректности ввода данных пользователем
     // вызываем функцию контроля стилей состояния кнопки submit
     inputElement.addEventListener('input', () => {
       checkInputValidity(formElement, inputElement, config);
-      // toggleButtonState(submitButton, formElement.checkInputValidity, config);
       // toggleButtonState(submitButton,  formElement.checkInputValidity(), config);
+      toggleButtonState(submitButton,  inputElement.validity.valid, config);
     });
   });
 };
