@@ -5,7 +5,7 @@ const validationConfig = {
   inactiveButtonClass: 'popup__submit-button_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
-}; 
+};
 // Показываем сообщение об ошибке
 const showError = (formElement, inputElement, config) => {
   const error = formElement.querySelector(`#${inputElement.id}-error`);
@@ -32,14 +32,28 @@ const checkInputValidity = (formElement, inputElement, config) => {
 }
 
 // задаём функцию контроля стилей состояния кнопки submit
-const toggleButtonState = (formSubmitButton, isActive, config) => {
-  if (!isActive) {
+const toggleButtonState = (formSubmitButton, config, inputList, formElement) => {
+  if (hasInvalidInput(inputList, formElement, config)) {
+    // showError(formElement, inputElement, config);
     formSubmitButton.classList.add(config.inactiveButtonClass);
     formSubmitButton.disabled = true;
   } else {
+    // hideError(formElement, inputElement, config);
     formSubmitButton.classList.remove(config.inactiveButtonClass);
     formSubmitButton.disabled = false;
   };
+}
+
+const hasInvalidInput = (inputList, formElement, config) => {
+  return inputList.some(inputElement => {
+    if (!inputElement.validity.valid) {
+      showError(formElement, inputElement, config);
+      return true;
+    } else {
+      hideError(formElement, inputElement, config);
+      return false;
+    };
+  })
 }
 
 const setEventListener = (formElement, config) => {
@@ -48,15 +62,13 @@ const setEventListener = (formElement, config) => {
   // находим кнопку submit
   const submitButton = formElement.querySelector(config.submitButtonSelector);
   // вызываем функцию проверки состояния стилей кнопки submit
-  toggleButtonState(submitButton, formElement.checkInputValidity, config);
+  toggleButtonState(submitButton, config, inputList, formElement);
   inputList.forEach((inputElement) => {
     // Вешаем слушатель события input на каждый элемент формы
     // вызываем функцию проверки корректности ввода данных пользователем
     // вызываем функцию контроля стилей состояния кнопки submit
     inputElement.addEventListener('input', () => {
-      checkInputValidity(formElement, inputElement, config);
-      // toggleButtonState(submitButton,  formElement.checkInputValidity(), config);
-      toggleButtonState(submitButton,  inputElement.validity.valid, config);
+    toggleButtonState(submitButton, config, inputList, formElement);
     });
   });
 };
