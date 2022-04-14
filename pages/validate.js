@@ -6,6 +6,28 @@ const validationConfig = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
 }; 
+// Показываем сообщение об ошибке
+const showError = (formElement, inputElement, config) => {
+  const error = formElement.querySelector(`#${inputElement.id}-error`);
+  error.textContent = inputElement.validationMessage;
+  inputElement.classList.add(config.inputErrorClass);
+}
+
+// Скрываем сообщение об ошибке
+const hideError = (formElement, inputElement, config) => {
+  const error = formElement.querySelector(`#${inputElement.id}-error`);
+  error.textContent = '';
+  inputElement.classList.remove(config.inputErrorClass);
+}
+
+// Проверяем валидно ли введёное в поле ввода значение
+function isValid(formElement, inputElement, config) {
+  if (!inputElement.validity.valid) {
+    showError(formElement, inputElement, config);
+  } else {
+    hideError(formElement, inputElement, config);
+  };
+}
 
 // задаём функцию контроля стилей состояния кнопки submit
 const toggleButtonState = (formSubmitButton, isActive, config) => {
@@ -15,7 +37,7 @@ const toggleButtonState = (formSubmitButton, isActive, config) => {
   } else {
     formSubmitButton.classList.add(config.inactiveButtonClass);
     formSubmitButton.disabled = true;
-  }
+  };
 }
 
 const setEventListener = (formElement, config) => {
