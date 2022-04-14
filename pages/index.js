@@ -50,7 +50,8 @@ function clearErrors (type) {
 //Функция закрытия попапа по клавише
 function popupCloserByKeydown (evt) {
   if (evt.key === 'Escape') {
-    closePopup();
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
   }
 }
 
