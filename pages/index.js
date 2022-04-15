@@ -74,12 +74,14 @@ function closeOpenedPopup() {
 function openPopup(type) {
   type.classList.add('popup_opened');
   clearErrors(type);
-  document.addEventListener('keydown', popupCloserByKeydown)
+  document.addEventListener('keydown', popupCloserByKeydown);
+  type.addEventListener('click', popupCloseByClick);
 }
 // Закрываем Popup
 function closePopup(type) {
   type.classList.remove('popup_opened');
-  document.removeEventListener('keydown', popupCloserByKeydown)
+  document.removeEventListener('keydown', popupCloserByKeydown);
+  type.removeEventListener('click', popupCloseByClick);
 }
 // Открываем Popup (profile)
 function openProfile() {
@@ -158,7 +160,6 @@ function formSubmitCard(event) {
 // Слушатели кнопок
 editBtn.addEventListener('click', openProfile);
 addBtn.addEventListener('click', openCard);
-document.addEventListener('click', popupCloseByClick);
 // кнопки закрытия
 popupCloserProfile.addEventListener('click', () => closePopup(popupProfile)); // popup Profile
 popupCloserCard.addEventListener('click', () => closePopup(popupCard)); // popup Card
