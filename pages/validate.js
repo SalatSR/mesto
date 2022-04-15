@@ -1,11 +1,25 @@
 const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
+  errorSelector: '.popup__error',
   submitButtonSelector: '.popup__submit-button',
   inactiveButtonClass: 'popup__submit-button_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
 };
+// Функция очистки сообщений ошибок при повторном открытии попапа
+function clearErrors (type, config) {
+  const errors = Array.from(type.querySelectorAll(config.errorSelector));
+  const inputs = Array.from(type.querySelectorAll(config.inputSelector));
+  errors.forEach((error) => {
+    error.textContent = '';
+  });
+
+  inputs.forEach((input) => {
+    input.classList.remove('popup__input_type_error');
+  });
+}
+
 // Показываем сообщение об ошибке
 const showError = (formElement, inputElement, config) => {
   const error = formElement.querySelector(`#${inputElement.id}-error`);

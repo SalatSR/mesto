@@ -36,19 +36,6 @@ const popupImageViewDescription = popupImageView.querySelector('.popup__descript
 // Находим шаблон карточки
 const cardTemplate = document.querySelector('#card-template').content;
 
-// Функция очистки сообщений ошибок при повторном открытии попапа
-function clearErrors (type) {
-  const errors = type.querySelectorAll('.popup__error');
-  const inputs = type.querySelectorAll('.popup__input');
-  errors.forEach((error) => {
-    error.textContent = '';
-  });
-
-  inputs.forEach((input) => {
-    input.classList.remove('popup__input_type_error');
-  });
-}
-
 //Функция закрытия попапа по клавише
 function popupCloserByKeydown (evt) {
   if (evt.key === 'Escape') {
@@ -73,7 +60,7 @@ function closeOpenedPopup() {
 // Открываем Popup
 function openPopup(type) {
   type.classList.add('popup_opened');
-  clearErrors(type);
+  clearErrors(type, validationConfig);
   document.addEventListener('keydown', popupCloserByKeydown);
   type.addEventListener('click', popupCloseByClick);
 }
