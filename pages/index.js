@@ -33,6 +33,8 @@ const cardsContainer = document.querySelector('.cards');
 // Находим поля ссылки и описания для попапа 
 const popupImageViewWindow = popupImageView.querySelector('.popup__image-view-window');
 const popupImageViewDescription = popupImageView.querySelector('.popup__description');
+// Находим шаблон карточки
+const cardTemplate = document.querySelector('#card-template').content;
 
 // Функция очистки сообщений ошибок при повторном открытии попапа
 function clearErrors (type) {
@@ -110,7 +112,6 @@ function deleteCard(event) {
 
 // Функция наполнения новой карточки
 function fillNewCard(cardHeader, cardLink) {
-  const cardTemplate = document.querySelector('#card-template').content;
   const cardItem = cardTemplate.cloneNode(true);
   const cardImg = cardItem.querySelector('.card__img');
   const cardName = cardItem.querySelector('.card__name');
