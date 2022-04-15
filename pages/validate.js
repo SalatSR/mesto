@@ -24,51 +24,41 @@ const hideError = (formElement, inputElement, config) => {
 const checkInputValidity = (formElement, inputElement, config) => {
   if (!inputElement.validity.valid) {
     showError(formElement, inputElement, config);
-    return false;
   } else {
     hideError(formElement, inputElement, config);
-    return true;
   };
 }
 
 // задаём функцию контроля стилей состояния кнопки submit
-const toggleButtonState = (formSubmitButton, config, inputList, formElement) => {
-  if (hasInvalidInput(inputList, formElement, config)) {
-    // showError(formElement, inputElement, config);
+const toggleButtonState = (formSubmitButton, inputList, config) => {
+  if (hasInvalidInput(inputList)) {
     formSubmitButton.classList.add(config.inactiveButtonClass);
     formSubmitButton.disabled = true;
   } else {
-    // hideError(formElement, inputElement, config);
     formSubmitButton.classList.remove(config.inactiveButtonClass);
     formSubmitButton.disabled = false;
   };
 }
 
-const hasInvalidInput = (inputList, formElement, config) => {
+const hasInvalidInput = (inputList) => {
   return inputList.some(inputElement => {
-    if (!inputElement.validity.valid) {
-      showError(formElement, inputElement, config);
-      return true;
-    } else {
-      hideError(formElement, inputElement, config);
-      return false;
-    };
-  })
-}
+    return !inputElement.validity.valid;
+  });
+};
 
 const setEventListener = (formElement, config) => {
   // Находим поля ввода в каждой форме
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
   // находим кнопку submit
   const submitButton = formElement.querySelector(config.submitButtonSelector);
-  // вызываем функцию проверки состояния стилей кнопки submit
-  toggleButtonState(submitButton, config, inputList, formElement);
+  toggleButtonState(submitButton, inputList, config);
   inputList.forEach((inputElement) => {
     // Вешаем слушатель события input на каждый элемент формы
     // вызываем функцию проверки корректности ввода данных пользователем
     // вызываем функцию контроля стилей состояния кнопки submit
     inputElement.addEventListener('input', () => {
-    toggleButtonState(submitButton, config, inputList, formElement);
+      checkInputValidity(formElement, inputElement, config)
+      toggleButtonState(submitButton, inputList, config);
     });
   });
 };
@@ -77,12 +67,12 @@ const setEventListener = (formElement, config) => {
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
-    // вызываем функцию чтобы поставить слушатели на поля ввода во всех формах
-    setEventListener(formElement, config);
     // сбрасываем стандартное действие формы на событие submit
     formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
     });
+    // вызываем функцию чтобы поставить слушатели на поля ввода во всех формах
+    setEventListener(formElement, config);
   });
 };
 
