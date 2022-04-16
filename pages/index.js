@@ -81,6 +81,7 @@ function openCard() {
   inputFormCardTitle.value = '';
   inputFormCardUrl.value = '';
   openPopup(popupCard);
+  enableValidation(validationConfig);
 }
 // Открываем Popup (Image-view)
 function openImageView(name, link) {
