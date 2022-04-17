@@ -16,7 +16,7 @@ const popupCloserCard = popupCard.querySelector('.popup__closer_card'); // popup
 const popupCloserImageView = popupImageView.querySelector('.popup__closer_image-view'); // popup Image
 // кнопки отправки форм
 const popupSubmitProfile = popupProfile.querySelector('.popup__submit-button_profile'); 
-const popupSubmitCard = popupProfile.querySelector('.popup__submit-button_card');
+const popupSubmitCard = popupCard.querySelector('.popup__submit-button_card');
 // Находим поля ввода
 // Находим поле ввода в поле Profile
 const inputFormProfileNameProfileSection = profileSection.querySelector('.profile__info-name');
@@ -71,10 +71,11 @@ function openProfile() {
 }
 // Открываем Popup (card)
 function openCard() {
-  clearErrors(popupCard, validationConfig);
-  enableValidation(validationConfig);
   inputFormCardTitle.value = '';
   inputFormCardUrl.value = '';
+  const inputList = Array.from(formCard.querySelectorAll(validationConfig.inputSelector));
+  clearErrors(popupCard, validationConfig);
+  toggleButtonState(popupSubmitCard, inputList, validationConfig);
   openPopup(popupCard);
 }
 // Открываем Popup (Image-view)
