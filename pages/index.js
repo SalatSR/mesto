@@ -61,6 +61,7 @@ function openPopup(type) {
 function closePopup(type) {
   type.classList.remove('popup_opened');
   document.removeEventListener('keydown', popupCloserByKeydown);
+  type.removeEventListener('click', popupCloseByClick);
 }
 // Открываем Popup (profile)
 function openProfile() {
