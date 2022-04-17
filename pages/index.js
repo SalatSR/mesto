@@ -47,20 +47,13 @@ function popupCloserByKeydown (evt) {
 // Функция проверки элемента на котором сработало событие click
 function popupCloseByClick(evt) {
   if (evt.target.classList.contains('popup')) {
-    closeOpenedPopup();
+    closePopup(evt.target);
   }
-}
-
-// Функция закрытия поапа по click
-function closeOpenedPopup() {
-  const openedPopup = document.querySelector('.popup_opened');
-  openedPopup.classList.remove('popup_opened');
 }
 
 // Открываем Popup
 function openPopup(type) {
   type.classList.add('popup_opened');
-  clearErrors(type, validationConfig);
   document.addEventListener('keydown', popupCloserByKeydown);
   type.addEventListener('click', popupCloseByClick);
 }
@@ -68,20 +61,21 @@ function openPopup(type) {
 function closePopup(type) {
   type.classList.remove('popup_opened');
   document.removeEventListener('keydown', popupCloserByKeydown);
-  type.removeEventListener('click', popupCloseByClick);
 }
 // Открываем Popup (profile)
 function openProfile() {
+  clearErrors(popupProfile, validationConfig);
   inputFormProfileName.value = inputFormProfileNameProfileSection.textContent;
   inputFormProfileJob.value = inputFormProfileJobProfileSection.textContent;
   openPopup(popupProfile)
 }
 // Открываем Popup (card)
 function openCard() {
+  clearErrors(popupCard, validationConfig);
+  enableValidation(validationConfig);
   inputFormCardTitle.value = '';
   inputFormCardUrl.value = '';
   openPopup(popupCard);
-  enableValidation(validationConfig);
 }
 // Открываем Popup (Image-view)
 function openImageView(name, link) {
