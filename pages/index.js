@@ -1,3 +1,4 @@
+import FormValidator from "./FormValidator.js";
 import Card from "./Card.js";
 
 // Находим нужный popup
