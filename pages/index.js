@@ -39,6 +39,16 @@ export const popupImageViewDescription = popupImageView.querySelector('.popup__d
 // Находим шаблон карточки
 // const cardTemplate = document.querySelector('#card-template').content;
 
+const validationConfig = {
+  // formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  errorSelector: '.popup__error',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+};
+
 //Функция закрытия попапа по клавише
 function popupCloserByKeydown (evt) {
   if (evt.key === 'Escape') {
@@ -71,18 +81,23 @@ function openProfile() {
   clearErrors(popupProfile, validationConfig);
   inputFormProfileName.value = inputFormProfileNameProfileSection.textContent;
   inputFormProfileJob.value = inputFormProfileJobProfileSection.textContent;
-  const inputList = Array.from(formCard.querySelectorAll(validationConfig.inputSelector));
-  toggleButtonState(popupSubmitProfile, inputList, validationConfig);
-  openPopup(popupProfile)
+  const formProfileValidator = new FormValidator(validationConfig, formProfile);
+  // const inputList = Array.from(formCard.querySelectorAll(validationConfig.inputSelector));
+  // const inputList = Array.from(formProfile.querySelectorAll(validationConfig.inputSelector));
+  // toggleButtonState(popupSubmitProfile, inputList, validationConfig);
+  // openPopup(popupProfile)
+  formProfileValidator.enableValidation();
 }
 // Открываем Popup (card)
 function openCard() {
   inputFormCardTitle.value = '';
   inputFormCardUrl.value = '';
-  const inputList = Array.from(formCard.querySelectorAll(validationConfig.inputSelector));
-  clearErrors(popupCard, validationConfig);
-  toggleButtonState(popupSubmitCard, inputList, validationConfig);
-  openPopup(popupCard);
+  const formCardValidator = new FormValidator(validationConfig, formCard);
+  // const inputList = Array.from(formCard.querySelectorAll(validationConfig.inputSelector));
+  // clearErrors(popupCard, validationConfig);
+  // toggleButtonState(popupSubmitCard, inputList, validationConfig);
+  // openPopup(popupCard);
+  formCardValidator.enableValidation();
 }
 // Открываем Popup (Image-view)
 // function openImageView(name, link) {

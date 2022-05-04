@@ -1,12 +1,12 @@
-const validationConfig = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  errorSelector: '.popup__error',
-  submitButtonSelector: '.popup__submit-button',
-  inactiveButtonClass: 'popup__submit-button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-};
+// const validationConfig = {
+//   formSelector: '.popup__form',
+//   inputSelector: '.popup__input',
+//   errorSelector: '.popup__error',
+//   submitButtonSelector: '.popup__submit-button',
+//   inactiveButtonClass: 'popup__submit-button_disabled',
+//   inputErrorClass: 'popup__input_type_error',
+//   errorClass: 'popup__error_visible'
+// };
 // Функция очистки сообщений ошибок при повторном открытии попапа
 function clearErrors (type, config) {
   const errors = Array.from(type.querySelectorAll(config.errorSelector));
@@ -78,17 +78,17 @@ const setEventListener = (formElement, config) => {
 };
 
 // задаём функцию валидации
-const enableValidation = (config) => {
-  const formList = Array.from(document.querySelectorAll(config.formSelector));
-  formList.forEach((formElement) => {
-    // сбрасываем стандартное действие формы на событие submit
-    formElement.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-    });
-    // вызываем функцию чтобы поставить слушатели на поля ввода во всех формах
-    setEventListener(formElement, config);
-  });
-};
+// const enableValidation = (config) => {
+//   const formList = Array.from(document.querySelectorAll(config.formSelector));
+//   formList.forEach((formElement) => {
+//     // сбрасываем стандартное действие формы на событие submit
+//     formElement.addEventListener('submit', (evt) => {
+//       evt.preventDefault();
+//     });
+//     // вызываем функцию чтобы поставить слушатели на поля ввода во всех формах
+//     setEventListener(formElement, config);
+//   });
+// };
 
 // включаем валидацию
 enableValidation(validationConfig);
