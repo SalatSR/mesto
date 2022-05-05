@@ -78,14 +78,16 @@ function closePopup(type) {
 }
 // Открываем Popup (profile)
 function openProfile() {
-  clearErrors(popupProfile, validationConfig);
+  // clearErrors(popupProfile, validationConfig);
   inputFormProfileName.value = inputFormProfileNameProfileSection.textContent;
   inputFormProfileJob.value = inputFormProfileJobProfileSection.textContent;
   const formProfileValidator = new FormValidator(validationConfig, formProfile);
+  // formProfileValidator._clearErrors();
   // const inputList = Array.from(formCard.querySelectorAll(validationConfig.inputSelector));
   // const inputList = Array.from(formProfile.querySelectorAll(validationConfig.inputSelector));
   // toggleButtonState(popupSubmitProfile, inputList, validationConfig);
-  // openPopup(popupProfile)
+  // formCardValidator._toggleButtonState(popupSubmitProfile, validationConfig.inputSelector);
+  openPopup(popupProfile)
   formProfileValidator.enableValidation();
 }
 // Открываем Popup (card)
@@ -95,8 +97,10 @@ function openCard() {
   const formCardValidator = new FormValidator(validationConfig, formCard);
   // const inputList = Array.from(formCard.querySelectorAll(validationConfig.inputSelector));
   // clearErrors(popupCard, validationConfig);
+  // formCardValidator._clearErrors();
+  // formCardValidator._toggleButtonState(popupSubmitCard, validationConfig.inputSelector);
   // toggleButtonState(popupSubmitCard, inputList, validationConfig);
-  // openPopup(popupCard);
+  openPopup(popupCard);
   formCardValidator.enableValidation();
 }
 // Открываем Popup (Image-view)
