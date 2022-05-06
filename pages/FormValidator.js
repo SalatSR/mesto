@@ -16,6 +16,7 @@ export default class FormValidator {
     this._inputList.forEach((inputElement) => {
       this._hideError(inputElement);
     });
+    this._toggleButtonState();
   };
 
   // Показываем сообщение об ошибке

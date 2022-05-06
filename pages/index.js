@@ -78,8 +78,6 @@ function closePopup(type) {
 function openProfile() {
   inputFormProfileName.value = inputFormProfileNameProfileSection.textContent;
   inputFormProfileJob.value = inputFormProfileJobProfileSection.textContent;
-  // const formProfileValidator = new FormValidator(validationConfig, formProfile);
-  // formProfileValidator.enableValidation();
   profileValidation.clearErrors();
   openPopup(popupProfile);
 };
@@ -87,8 +85,6 @@ function openProfile() {
 function openCard() {
   inputFormCardTitle.value = '';
   inputFormCardUrl.value = '';
-  // const formCardValidator = new FormValidator(validationConfig, formCard);
-  // formCardValidator.enableValidation();
   newCardValidation.clearErrors();
   openPopup(popupCard);
 }
