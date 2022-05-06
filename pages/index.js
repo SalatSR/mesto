@@ -11,8 +11,8 @@ const profileSection = document.querySelector('.profile');
 const formProfile = popupProfile.querySelector('.popup__form_profile');
 const formCard = popupCard.querySelector('.popup__form_card');
 // Находим кнопки
-const editBtn = profileSection.querySelector('.profile__edit-button'); // "Edit"
-const addBtn = profileSection.querySelector('.profile__add-button'); // "Add"
+const buttonEdit = profileSection.querySelector('.profile__edit-button'); // "Edit"
+const buttonAdd = profileSection.querySelector('.profile__add-button'); // "Add"
 // кнопки закрытия
 const popupCloserProfile = popupProfile.querySelector('.popup__closer_profile'); // popup Profile
 const popupCloserCard = popupCard.querySelector('.popup__closer_card'); // popup Card
@@ -105,16 +105,16 @@ function formSubmitProfile(event) {
 }
 function formSubmitCard(event) {
   event.preventDefault();
-  const newCard = {};
-  newCard.name = inputFormCardTitle.value;
-  newCard.link = inputFormCardUrl.value;
-  const card = new Card(newCard, '#card-template');
+  const cardNew = {};
+  cardNew.name = inputFormCardTitle.value;
+  cardNew.link = inputFormCardUrl.value;
+  const card = new Card(cardNew, '#card-template');
   addNewCard(card.generateCard());
   closePopup(popupCard);
 }
 // Слушатели кнопок
-editBtn.addEventListener('click', openProfile);
-addBtn.addEventListener('click', openCard);
+buttonEdit.addEventListener('click', openProfile);
+buttonAdd.addEventListener('click', openCard);
 // кнопки закрытия
 popupCloserProfile.addEventListener('click', () => closePopup(popupProfile)); // popup Profile
 popupCloserCard.addEventListener('click', () => closePopup(popupCard)); // popup Card
