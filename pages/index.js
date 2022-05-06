@@ -42,6 +42,10 @@ const validationConfig = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
 };
+const profileValidation = new FormValidator(validationConfig, formProfile);
+const newCardValidation = new FormValidator(validationConfig, formCard);
+profileValidation.enableValidation();
+newCardValidation.enableValidation(); 
 
 //Функция закрытия попапа по клавише
 function popupCloserByKeydown (evt) {
@@ -74,16 +78,18 @@ function closePopup(type) {
 function openProfile() {
   inputFormProfileName.value = inputFormProfileNameProfileSection.textContent;
   inputFormProfileJob.value = inputFormProfileJobProfileSection.textContent;
-  const formProfileValidator = new FormValidator(validationConfig, formProfile);
-  formProfileValidator.enableValidation();
+  // const formProfileValidator = new FormValidator(validationConfig, formProfile);
+  // formProfileValidator.enableValidation();
+  profileValidation.clearErrors();
   openPopup(popupProfile);
 };
 // Открываем Popup (card)
 function openCard() {
   inputFormCardTitle.value = '';
   inputFormCardUrl.value = '';
-  const formCardValidator = new FormValidator(validationConfig, formCard);
-  formCardValidator.enableValidation();
+  // const formCardValidator = new FormValidator(validationConfig, formCard);
+  // formCardValidator.enableValidation();
+  newCardValidation.clearErrors();
   openPopup(popupCard);
 }
 // Функция добавления новой карточки в разметку

@@ -1,5 +1,6 @@
 export default class FormValidator {
   constructor(config, formSelector) {
+    console.log(formSelector);
       this._formSelector = formSelector;
       this._inputSelector = config.inputSelector;
       this._errorSelector = config.errorSelector;
@@ -13,7 +14,7 @@ export default class FormValidator {
   };
   
   // Функция очистки сообщений ошибок при повторном открытии попапа
-  _clearErrors() {
+  clearErrors() {
     this._errorList.forEach((errorElement) => {
       errorElement.textContent = '';
     });
@@ -75,7 +76,6 @@ export default class FormValidator {
         evt.preventDefault();
     });
     this._setEventListener();
-    this._clearErrors();
     this._toggleButtonState();
   };
 }
