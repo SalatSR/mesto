@@ -62,13 +62,13 @@ function popupCloseByClick(evt) {
 export function openPopup(type) {
   type.classList.add('popup_opened');
   document.addEventListener('keydown', popupCloserByKeydown);
-  type.addEventListener('click', popupCloseByClick);
+  type.addEventListener('mousedown', popupCloseByClick);
 };
 // Закрываем Popup
 function closePopup(type) {
   type.classList.remove('popup_opened');
   document.removeEventListener('keydown', popupCloserByKeydown);
-  type.removeEventListener('click', popupCloseByClick);
+  type.removeEventListener('mousedown', popupCloseByClick);
 };
 // Открываем Popup (profile)
 function openProfile() {
