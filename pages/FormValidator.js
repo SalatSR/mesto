@@ -7,9 +7,9 @@ export default class FormValidator {
       this._inactiveButtonClass = config.inactiveButtonClass;
       this._inputErrorClass = config.inputErrorClass;
       this._errorClass = config.errorClass;
-      this._inputList = Array.from(this._formSelector.querySelectorAll(this._inputSelector));
-      this._errorList = Array.from(this._formSelector.querySelectorAll(this._errorSelector));
-      this._submitButton = this._formSelector.querySelector(this._submitButtonSelector);
+      this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
+      this._errorList = Array.from(this._form.querySelectorAll(this._errorSelector));
+      this._submitButton = this._form.querySelector(this._submitButtonSelector);
   };
   
   // Функция очистки сообщений ошибок при повторном открытии попапа
@@ -21,7 +21,7 @@ export default class FormValidator {
 
   // Показываем сообщение об ошибке
   _showError(inputElement) {
-    const error = this._formSelector.querySelector(`#${inputElement.id}-error`);
+    const error = this._form.querySelector(`#${inputElement.id}-error`);
     console.log(inputElement.id)
     error.textContent = inputElement.validationMessage;
     inputElement.classList.add(this._inputErrorClass);
@@ -29,7 +29,7 @@ export default class FormValidator {
 
   // Скрываем сообщение об ошибке
   _hideError(inputElement){
-    const error = this._formSelector.querySelector(`#${inputElement.id}-error`);
+    const error = this._form.querySelector(`#${inputElement.id}-error`);
     error.textContent = '';
     inputElement.classList.remove(this._inputErrorClass);
   };
@@ -68,7 +68,7 @@ export default class FormValidator {
   };
 
   enableValidation = () => {
-    this._formSelector.addEventListener('submit', (evt) => {
+    this._form.addEventListener('submit', (evt) => {
         evt.preventDefault();
     });
     this._setEventListener();
