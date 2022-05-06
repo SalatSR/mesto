@@ -1,7 +1,6 @@
 export default class FormValidator {
-  constructor(config, formSelector) {
-    console.log(formSelector);
-      this._formSelector = formSelector;
+  constructor(config, form) {
+      this._form = form;
       this._inputSelector = config.inputSelector;
       this._errorSelector = config.errorSelector;
       this._submitButtonSelector = config.submitButtonSelector;
@@ -15,18 +14,15 @@ export default class FormValidator {
   
   // Функция очистки сообщений ошибок при повторном открытии попапа
   clearErrors() {
-    this._errorList.forEach((errorElement) => {
-      errorElement.textContent = '';
-    });
-
     this._inputList.forEach((inputElement) => {
-      inputElement.classList.remove('popup__input_type_error');
+      this._hideError(inputElement);
     });
   };
 
   // Показываем сообщение об ошибке
   _showError(inputElement) {
     const error = this._formSelector.querySelector(`#${inputElement.id}-error`);
+    console.log(inputElement.id)
     error.textContent = inputElement.validationMessage;
     inputElement.classList.add(this._inputErrorClass);
   };
