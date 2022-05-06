@@ -8,7 +8,6 @@ export default class FormValidator {
       this._inputErrorClass = config.inputErrorClass;
       this._errorClass = config.errorClass;
       this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
-      this._errorList = Array.from(this._form.querySelectorAll(this._errorSelector));
       this._submitButton = this._form.querySelector(this._submitButtonSelector);
   };
   
@@ -22,7 +21,6 @@ export default class FormValidator {
   // Показываем сообщение об ошибке
   _showError(inputElement) {
     const error = this._form.querySelector(`#${inputElement.id}-error`);
-    console.log(inputElement.id)
     error.textContent = inputElement.validationMessage;
     inputElement.classList.add(this._inputErrorClass);
   };
