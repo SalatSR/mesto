@@ -1,13 +1,7 @@
-// import {openPopup, popupImageView, popupImageViewWindow, popupImageViewDescription} from '../pages/index.js';
-
-
 export default class Card {
-  constructor({title, link, handleCardClick}, cardSelector) {
-    // console.log('title', title);
-    // console.log('link', link);
-    // console.log('handleCardClick', handleCardClick);
-    this._title = title;
-    this._url = link;
+  constructor({name, link, handleCardClick}, cardSelector) {
+    this._name = name;
+    this._link = link;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
   };
@@ -20,13 +14,6 @@ export default class Card {
       .cloneNode(true);
     return cardElement;
   };
-
-  // _openImageView() {
-  //   popupImageViewWindow.src = this._url;
-  //   popupImageViewWindow.alt = this._title;
-  //   popupImageViewDescription.textContent = this._title;
-  //   openPopup(popupImageView);
-  // };
   
   _addLike() {
     this._like.classList.toggle('card__like_active');
@@ -45,19 +32,18 @@ export default class Card {
     this._element.querySelector('.card__delete-button').addEventListener('click', () => {
       this._deleteCard();
     });
-    // this._cardImage.addEventListener('click', () => {
-    //   this._openImageView();
-    // });
-    this._cardImage.addEventListener('click', this._handleCardClick);
+    this._cardImage.addEventListener('click', () => {
+      this._handleCardClick();
+    });
   };
   
   generateCard() {
     // Помещаем данные в объект шаблона
     this._element = this._getTemplate();
-    this._element.querySelector('.card__name').textContent = this._title;
+    this._element.querySelector('.card__name').textContent = this._name;
     this._cardImage = this._element.querySelector('.card__img');
-    this._cardImage.alt = this._title;
-    this._cardImage.src = this._url;
+    this._cardImage.alt = this._name;
+    this._cardImage.src = this._link;
     
     this._setEventListener();
 

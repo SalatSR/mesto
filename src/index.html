@@ -57,7 +57,7 @@
         <button type="button" class="popup__closer popup__closer_profile" aria-label="popup closer button"></button>
         <h2 class="popup__header">Редактировать профиль</h2>
         <form action="#" name="form-profile-info" class="popup__form popup__form_profile" novalidate>
-          <input name="form-profile-input-name"
+          <input name="name"
                   id="name"
                   type="text"
                   minlength="2"
@@ -66,7 +66,7 @@
                   placeholder="ФИО"
                   required>
           <span id='name-error' class="popup__error"></span>
-          <input name="form-profile-input-job"
+          <input name="job"
                   id="job"
                   type="text"
                   minlength="2"
@@ -85,7 +85,7 @@
         <button type="button" class="popup__closer popup__closer_card" aria-label="popup closer button"></button>
         <h2 class="popup__header">Новое место</h2>
         <form action="#" name="form-card-info" class="popup__form popup__form_card" novalidate>
-          <input name="form-card-input-title"
+          <input name="name"
                   id="title"
                   type="text"
                   minlength="2"
@@ -94,7 +94,7 @@
                   placeholder="Название"
                   required>
           <span id="title-error" class="popup__error">Вы пропустили поле</span>
-          <input name="form-card-input-url"
+          <input name="link"
                   id="url"
                   type="url"
                   class="popup__input popup__input_type_url"
@@ -115,7 +115,6 @@
     </div>
 
   </div>
-  <!-- <script src="./pages/default.js"></script> -->
   <script type="module" src="../src/pages/index.js"></script>
 </body>
 </html>

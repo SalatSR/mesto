@@ -47,55 +47,13 @@ const validationConfig = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
 };
-const profileValidation = new FormValidator(validationConfig, formProfile);
-const newCardValidation = new FormValidator(validationConfig, formCard);
-profileValidation.enableValidation();
-newCardValidation.enableValidation();
 
 const popupWithImage = new PopupWithImage('.popup_image-view');
 popupWithImage.setEventListeners();
 
-const userData = new UserInfo({
-  nameSelector: '.profile__info-name',
-  professionSelector: '.profile__info-job'
-});
-
-const popupWithProfile = new PopupWithForm({
-  popupSelector: '.popup_profile',
-  // handlerSubmit: (item) => {
-  handlerSubmit: (evt) => {
-    // userData.setUserInfo(item)
-    evt.preventDefault();
-    const data = editProfilePopup.getInputValues();
-    userInfo.setUserInfo(data); 
-    editProfilePopup.close()
-  }
-});  
-popupWithProfile.setEventListeners();
-
-const popupCreateCard = new PopupWithForm({
-  popupSelector: '.popup_card',
-  handlerSubmit: (item) => {
-    const card = newCard(item);
-    cardSection.addItem(card);
-  }
-});
-popupCreateCard.setEventListeners();
-
-const sectionDefault = new Section({
-  items: initialCards,
-  renderer: (item) => {
-    const cardDefault = newCard(item);
-    sectionDefault.addItem(cardDefault)
-  }
-},
-'.cards'
-);
-sectionDefault.renderItems();
-
 function newCard(item) {
   const card = new Card ({
-    title: item.name,
+    name: item.name,
     link: item.link,
     handleCardClick: () => {
       popupWithImage.open(item);
@@ -106,6 +64,45 @@ function newCard(item) {
   const generatedCard = card.generateCard();
   return generatedCard;
 };
+
+const sectionDefault = new Section({
+  items: initialCards,
+  renderer: (item) => {
+    const card = newCard(item);
+    sectionDefault.addItem(card);
+  }
+},
+'.cards'
+);
+sectionDefault.renderItems();
+
+const userData = new UserInfo({
+  nameSelector: '.profile__info-name',
+  jobSelector: '.profile__info-job'
+});
+
+const popupWithProfile = new PopupWithForm({
+  popupSelector: '.popup_profile',
+  handlerSubmit: (item) => {
+    userData.setUserInfo(item);
+  }
+});  
+popupWithProfile.setEventListeners();
+
+const popupCreateCard = new PopupWithForm({
+  popupSelector: '.popup_card',
+  handlerSubmit: (item) => {
+    const card = newCard(item);
+    sectionDefault.addItem(card);
+  }
+});
+popupCreateCard.setEventListeners();
+
+
+const profileValidation = new FormValidator(validationConfig, formProfile);
+const newCardValidation = new FormValidator(validationConfig, formCard);
+profileValidation.enableValidation();
+newCardValidation.enableValidation();
 
 // //Функция закрытия попапа по клавише
 // function popupCloserByKeydown (evt) {
@@ -138,7 +135,7 @@ function newCard(item) {
 function openProfile() {
   const user = userData.getUserInfo();
   inputFormProfileName.value = user.name;
-  inputFormProfileJob.value = user.profession;
+  inputFormProfileJob.value = user.job;
   profileValidation.clearErrors();
   // openPopup(popupProfile);
   popupWithProfile.open();
@@ -163,6 +160,7 @@ function openProfile() {
 //   popup.open()
 // }
 function openCard() {
+  profileValidation.clearErrors();
   popupCreateCard.open();
 };
 // // Функция добавления новой карточки в разметку
@@ -174,6 +172,7 @@ function openCard() {
 //   const card = new Card(item, '#card-template');
 //   addNewCard(card.generateCard());
 // });
+
 
 
 
