@@ -1,3 +1,4 @@
+import './index.css';
 import {initialCards} from "../utils/default.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";

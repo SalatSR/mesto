@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Место Россия</title>
 </head>
 <body class="page">
@@ -12,7 +11,7 @@
     <header class="header">
       <a href="https://salatsr.github.io/mesto/index.html"
           class="header__logo-link">
-        <img src="./images/image-logo.svg"
+        <img src="<%=require('./images/image-logo.svg')%>"
           alt="Логотип Mestro Russia"
           class="header__logo">
       </a>
@@ -20,7 +19,7 @@
     <main class="content">
       <section class="profile">
         <div class="profile__info">
-        <img src="./images/image-avatar.png"
+        <img src="<%=require('./images/image-avatar.png')%>"
               alt="ваше фото в профиле"
               class="profile__avatar-img">
         <div class="profile__text">
@@ -115,6 +114,6 @@
     </div>
 
   </div>
-  <script type="module" src="../src/pages/index.js"></script>
+  <script type="module" src="./src/pages/index.js"></script>
 </body>
 </html>
