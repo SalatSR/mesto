@@ -1,5 +1,14 @@
 import './index.css';
-import {initialCards} from "../utils/default.js";
+import {
+  initialCards,
+  formProfile,
+  formCard,
+  buttonEdit,
+  buttonAdd,
+  inputFormProfileName,
+  inputFormProfileJob,
+  validationConfig
+} from "../utils/Constants.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
@@ -7,36 +16,12 @@ import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 
-// Находим нужный popup
-const popupProfile = document.querySelector('.popup_profile');
-const popupCard = document.querySelector('.popup_card');
-export const popupImageView = document.querySelector('.popup_image-view');
-// Находим поле Профиля
-const profileSection = document.querySelector('.profile');
-// Находим формы
-const formProfile = popupProfile.querySelector('.popup__form_profile');
-const formCard = popupCard.querySelector('.popup__form_card');
-// Находим кнопки
-const buttonEdit = profileSection.querySelector('.profile__edit-button'); // "Edit"
-const buttonAdd = profileSection.querySelector('.profile__add-button'); // "Add"
-// в формах popup
-// Profile
-const inputFormProfileName = formProfile.querySelector('.popup__input_type_name');
-const inputFormProfileJob = formProfile.querySelector('.popup__input_type_job');
-
-const validationConfig = {
-  inputSelector: '.popup__input',
-  errorSelector: '.popup__error',
-  submitButtonSelector: '.popup__submit-button',
-  inactiveButtonClass: 'popup__submit-button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-};
-
+// создаём экземпляр popupWithImage класса UserInfo
 const popupWithImage = new PopupWithImage('.popup_image-view');
 popupWithImage.setEventListeners();
 
-function newCard(item) {
+// Передаём данные для сборки шаблона карточки
+function createCard(item) {
   const card = new Card ({
     name: item.name,
     link: item.link,
@@ -50,10 +35,11 @@ function newCard(item) {
   return generatedCard;
 };
 
+// Инициализируем загрузку карточек по-умолчанию
 const sectionDefault = new Section({
   items: initialCards,
   renderer: (item) => {
-    const card = newCard(item);
+    const card = createCard(item);
     sectionDefault.addItem(card);
   }
 },
@@ -61,11 +47,13 @@ const sectionDefault = new Section({
 );
 sectionDefault.renderItems();
 
+// создаём экземпляр userData класса UserInfo
 const userData = new UserInfo({
   nameSelector: '.profile__info-name',
   jobSelector: '.profile__info-job'
 });
 
+// создаём экземпляр Profile класса Popup
 const popupWithProfile = new PopupWithForm({
   popupSelector: '.popup_profile',
   handlerSubmit: (item) => {
@@ -74,10 +62,11 @@ const popupWithProfile = new PopupWithForm({
 });  
 popupWithProfile.setEventListeners();
 
+// создаём экземпляр Card класса Popup
 const popupCreateCard = new PopupWithForm({
   popupSelector: '.popup_card',
   handlerSubmit: (item) => {
-    const card = newCard(item);
+    const card = createCard(item);
     sectionDefault.addItem(card);
   }
 });
@@ -92,15 +81,17 @@ function openProfile() {
   popupWithProfile.open();
 };
 
+// Открываем Popup (card)
 function openCard() {
-  newCardValidation.clearErrors();
+  createCardValidation.clearErrors();
   popupCreateCard.open();
 };
 
+// Вызываем валидатор для профиля и карточек
 const profileValidation = new FormValidator(validationConfig, formProfile);
-const newCardValidation = new FormValidator(validationConfig, formCard);
+const createCardValidation = new FormValidator(validationConfig, formCard);
 profileValidation.enableValidation();
-newCardValidation.enableValidation();
+createCardValidation.enableValidation();
 
 // Слушатели кнопок
 buttonEdit.addEventListener('click', openProfile);

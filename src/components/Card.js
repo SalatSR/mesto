@@ -25,7 +25,6 @@ export default class Card {
   };
 
   _setEventListener() {
-    this._like = this._element.querySelector('.card__like');
     this._like.addEventListener('click', () => {
       this._addLike();
     });
@@ -41,6 +40,7 @@ export default class Card {
     // Помещаем данные в объект шаблона
     this._element = this._getTemplate();
     this._element.querySelector('.card__name').textContent = this._name;
+    this._like = this._element.querySelector('.card__like');
     this._cardImage = this._element.querySelector('.card__img');
     this._cardImage.alt = this._name;
     this._cardImage.src = this._link;
