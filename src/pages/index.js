@@ -1,14 +1,19 @@
 import './index.css';
 import {
   initialCards,
+  formAvatar,
   formProfile,
   formCard,
+  buttonAvatarEdit,
   buttonEdit,
   buttonAdd,
+  imageAvatar,
+  inputFormAvatar,
   inputFormProfileName,
   inputFormProfileJob,
   validationConfig
 } from "../utils/Constants.js";
+import Api from '../components/Api.js';
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation";
@@ -16,6 +21,15 @@ import UserInfo from "../components/UserInfo.js";
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
+
+const api = new Api({
+  url: 'https://mesto.nomoreparties.co/v1/cohort-42',
+  token: '62731dcc-205e-4eca-8046-563c23fbdff8'
+})
+
+// создаём экземпляр popupWithConfirmation класса Popup
+const popupWithConfirmation = new PopupWithConfirmation('.popup_submit-deleting');
+popupWithConfirmation.setEventListeners();
 
 // создаём экземпляр popupWithImage класса UserInfo
 const popupWithImage = new PopupWithImage('.popup_image-view');
@@ -28,6 +42,9 @@ function createCard(item) {
     link: item.link,
     handleCardClick: () => {
       popupWithImage.open(item);
+    },
+    handleCardDelet: () => {
+      popupWithConfirmation.open(item);
     }
   },
   '#card-template'
@@ -63,6 +80,16 @@ const popupWithProfile = new PopupWithForm({
 });  
 popupWithProfile.setEventListeners();
 
+// создаём экземпляр Avatar класса Popup
+const popupWithAvatar = new PopupWithForm({
+  popupSelector: '.popup_avatar-edit',
+  handlerSubmit: (item) => {
+    imageAvatar.src = item.link
+    popupWithAvatar.close();
+  }
+});  
+popupWithAvatar.setEventListeners();
+
 // создаём экземпляр Card класса Popup
 const popupCreateCard = new PopupWithForm({
   popupSelector: '.popup_card',
@@ -88,12 +115,23 @@ function openCard() {
   popupCreateCard.open();
 };
 
+// Открываем Popup (Avatar)
+function openAvatar() {
+  // const user = userData.getUserInfo();
+  // inputFormAvatar.value = user.name;
+  avatarValidation.clearErrors();
+  popupWithAvatar.open();
+};
+
 // Вызываем валидатор для профиля и карточек
+const avatarValidation = new FormValidator(validationConfig, formAvatar);
 const profileValidation = new FormValidator(validationConfig, formProfile);
 const createCardValidation = new FormValidator(validationConfig, formCard);
+avatarValidation.enableValidation();
 profileValidation.enableValidation();
 createCardValidation.enableValidation();
 
 // Слушатели кнопок
+buttonAvatarEdit.addEventListener('click', openAvatar);
 buttonEdit.addEventListener('click', openProfile);
 buttonAdd.addEventListener('click', openCard);

@@ -91,12 +91,12 @@
         <h2 class="popup__header">Обновить аватар</h2>
         <form action="#" name="form-avatar-edit" class="popup__form popup__form_avatar-edit" novalidate>
           <input name="link"
-                  id="url-avatar-edit"
+                  id="urlAvatarEdit"
                   type="url"
-                  class="popup__input popup__input_type_url"
+                  class="popup__input popup__input_type_url-avatar"
                   placeholder="Ссылка на картинку"
                   required>
-          <span id="url-error" class="popup__error">Введите адрес</span>
+          <span id="urlAvatarEdit-error" class="popup__error">Введите адрес</span>
           <button type="submit" class="popup__submit-button popup__submit-button_avatar-edit">Сохранить</button>
         </form>
       </div>
@@ -128,7 +128,7 @@
       </div>
     </div>
 
-    <div class="popup popup_submit-deleting popup_opened">
+    <div class="popup popup_submit-deleting">
       <div class="popup__container">
         <button type="button" class="popup__closer popup__closer_submit-deleting" aria-label="popup submit-deleting button"></button>
         <h2 class="popup__header">Вы уверены?</h2>
