@@ -25,14 +25,14 @@ export default class Card {
     return this._cardId;
   }
 // Присваиваем своему лайку свой ID
-  ownLike() {
+  setOwnLike() {
     return this._likes.some(like => {
         return like._id === this._userId;
     });
   }
 // Отображаем стоит или не стоит свой лайк
   toggleLikeState() {
-    if(this.ownLike()) {
+    if(this.setOwnLike()) {
       this._cardButtonLike.classList.add('card__like_active');
     }
     else {

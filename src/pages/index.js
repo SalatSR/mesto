@@ -20,9 +20,12 @@ import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 
 const api = new Api({
-  url: 'https://mesto.nomoreparties.co/v1/cohort-42',
-  token: '62731dcc-205e-4eca-8046-563c23fbdff8'
-})
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-42',
+  headers: {
+    authorization: '62731dcc-205e-4eca-8046-563c23fbdff8',
+    'Content-Type': 'application/json'
+  }
+});
 
 // создаём экземпляр popupWithImage класса UserInfo
 const popupWithImage = new PopupWithImage('.popup_image-view');
@@ -44,7 +47,7 @@ function createCard(item) {
       popupWithConfirm.open(card);
     },
     handleCardLike: () => {
-      const cardIsLike = card.ownLike();
+      const cardIsLike = card.setOwnLike();
       const toggleCardLike = cardIsLike ?
         api.unlikeCard(card.getCardId()) :
         api.likeCard(card.getCardId());
@@ -106,6 +109,8 @@ popupWithProfile.setEventListeners();
 const popupWithAvatar = new PopupWithForm({
   popupSelector: '.popup_avatar-edit',
   handlerSubmit: (item) => {
+    const submitBottonText = popupWithAvatar.getSubmitBottonText();
+    popupWithAvatar.setLoadingText('Сохранение...');
     api.editProfileAvatar(item)
       .then((res) => {
         userData.setUserAvatar(res)
@@ -113,6 +118,9 @@ const popupWithAvatar = new PopupWithForm({
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        popupWithAvatar.setLoadingText(submitBottonText);
       })
   }
 });  
