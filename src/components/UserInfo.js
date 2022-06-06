@@ -20,10 +20,7 @@ export default class UserInfo {
   setUserInfo(item) {
     this._name.textContent = item.name;
     this._job.textContent = item.about;
-    this._userId = item._id;
-  };
-
-  setUserAvatar(item) {
     this._avatar.src = item.avatar;
+    this._userId = item._id;
   };
 };

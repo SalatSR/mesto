@@ -113,7 +113,7 @@ const popupWithAvatar = new PopupWithForm({
     popupWithAvatar.setLoadingText('Сохранение...');
     api.editProfileAvatar(item)
       .then((res) => {
-        userData.setUserAvatar(res)
+        userData.setUserInfo(res)
         popupWithAvatar.close()
       })
       .catch((err) => {
@@ -193,7 +193,6 @@ function openAvatar() {
 Promise.all([api.getUserData(), api.getInitialCards()])
     .then(([UserProfileData, initialCards]) => {
       userData.setUserInfo(UserProfileData);
-      userData.setUserAvatar(UserProfileData);
         sectionDefault.renderItems(initialCards);
       })
     .catch(err => {
