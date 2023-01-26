@@ -28,5 +28,4 @@ https://salatsr.github.io/mesto/index.html
 
 1. Клонируйте репозиторий
 2. Выолните команду `npm i webpack --save-dev`
-git clone https://github.com/Mattzenn/mesto.git
 3. Выполните команду `npm run build`
